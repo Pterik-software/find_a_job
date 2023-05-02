@@ -25,13 +25,16 @@ if(isset($_POST['archived']))
   {$archived = trim($_POST['archived']);}
 else {$archived = 0;};
 $answered = strip_tags(htmlentities($_POST['answered']));
+if (trim($answered) == '') $answered=0;
 $answer_text = strip_tags(htmlentities($_POST['answer_text']));
-
+if (strpos($answer_text, "\r\n\r\n")>0)
+  {$answer_text= str_replace("\r\n\r\n","\r\n",$answer_text);};
 $query = "update contacts set ".
          "comment = :comment, company_name = :company_name, ".
          "contact_person = :contact_person, email = :email, phone = :phone, ".
          "position_link = :position_link, position_name = :position_name, ".
-         "position_description = :position_description, position_source = :position_source, ".
+         "position_description = REPLACE( :position_description, CONCAT(CHAR(13),char(10),CHAR(13),CHAR(10)), CONCAT(CHAR(13),char(10))),".
+         " position_source = :position_source, ".
          "archived = :archived, updated = NOW(), answered = :answered, answer_text = :answer_text ".
          "where id = :id ";
 try

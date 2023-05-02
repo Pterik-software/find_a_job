@@ -4,7 +4,19 @@
     <meta charset="utf-8">
     <title>Job search</title>
   </head>
-  <body>    
+<script type="text/javascript">
+  /* <![CDATA[ */
+   function externalLinks() {
+    links = document.getElementsByTagName("a");
+    for (i=0; i<links.length; i++) {
+      link = links[i];
+      if (link.getAttribute("href") && link.getAttribute("rel") == "external")
+      link.target = "_blank";
+    }
+   }
+   window.onload = externalLinks;
+  /* ]]> */ 
+ </script>  <body>    
 <h1>Список лидов</h1>
 <?php 
 //print_r($_GET);
@@ -12,7 +24,7 @@
 <table>
   <tr>  
   <td>
-  <button><img src="images/insert.png" style="vertical-align: middle" > <a href="insert_contact.php">Добавить лид</a></button>
+  <button><img src="images/insert.png" style="vertical-align: middle" > <a href="insert_contact.php">Добавить вакансию</a></button>
   </td>
   <form action="/index.php" method="get">
   <td><label for="search">Поиск</label></td>
@@ -43,15 +55,13 @@ where archived is false
 <table rules="all">
   <thead>
     <tr>
-      <th>id</th>
+      <th>Вакансия</th>
       <th>Компания</th>
       <th>Контакт</th>
       <th>Мой комментарий</th>
       <th>email</th>
       <th>phone</th>
       <th>Источник</th>
-      <th>Вакансия кратко</th>
-      <th>Линк вакансии</th>
       <th>Ответили</th>
       <th>Текст ответа</th>
       <th>Создано</th>
@@ -85,28 +95,36 @@ try
     " case when answered then 'Да' when not answered then 'Нет' else '' end sanswered ".
     " FROM contacts c ".$archived_value.$search_value. ' order by created desc';
     foreach ($db->query($sql) as $row) {
-    echo '<td> <a href="update_contact.php/?id='.$row['id'].'">'.$row['id'].'</td>';
+    if (empty($row['position_link'])) {
+      echo '<td> <a href="update_contact.php/?id='.$row['id'].'">'.$row['position_name'];
+      echo '</td>';
+    }
+    else {
+      echo '<td> <a href="update_contact.php/?id='.$row['id'].'">'.$row['position_name'];
+      echo '<a href="'.$row['position_link'].'" rel="external"> <img src="images/new_window.png"></a>'.'</td>';
+    };
     echo "<td>".$row['company_name'] . "</td>";
     echo "<td>".$row['contact_person'] . "</td>";
     echo "<td>".$row['comment'] . "</td>";
     echo "<td>".substr($row['email'],0,20)."<br>".substr($row['email'],20,40)."</td>";
-    echo "<td>".$row['phone'] . "</td>";
-    echo "<td>".$row['position_source'] . "</td>";
-    echo "<td>".$row['position_name']. "</td>";
-    if (empty($row['position_link'])) {
-    echo '<td>---</td>'."\n";
-        }
+    if (strlen($row['phone'])==0)
+      {echo "<td></td>";}
+    elseif (is_numeric($row['phone']))
+      {
+      echo "<td>#".$row['phone'] . "</td>";
+      }
     else {
-        echo '<td><a href = "'.$row['position_link'].'" target="_blank">'.substr($row['position_link'],0,40).'<br>'.substr($row['position_link'],40,40).'</td>';
-        };
+      echo "<td><a href=".$row['phone'].' target="_blank" rel="external">'.substr($row['phone'],0,16).' </a>'.'</td>';
+    };  
+    echo "<td>".$row['position_source'] . "</td>";
     echo "<td>".$row['sanswered'] . "</td>"."\n";
     if (empty($row['answer_text'])) 
        {
-       echo '<td>---</td>'."\n";
+       echo '<td></td>'."\n";
        }
     else 
       {
-        echo '<td>'.substr($row['answer_text'],0,40).'<br>'.substr($row['answer_text'],40,40).'</td>';
+        echo '<td>'.substr($row['answer_text'],0,40).'</td>';
       };
     if ($row['when_created']==0) {
       echo '<td>Сегодня</td>'."\n";

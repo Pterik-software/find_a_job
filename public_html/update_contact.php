@@ -57,6 +57,10 @@ try
         echo "</tr>"."\n";
 
         echo "<tr>";
+        echo '<td><label for="phone">phone</label></td>';
+        echo '<td><input type="phone" id = "phone" name="phone" value="'.$row['phone'].'"></td>';
+        echo "</tr>"."\n";
+        echo "<tr>";
         echo '<td><label for="position_link">Линк вакансии</label></td>';
         if (!empty($row['position_link'])) 
             {
@@ -80,20 +84,19 @@ try
 
         echo "<tr>";
         echo '<td><label for="position_description">Вакансия текстом</label></td>';
-        echo '<td><textarea name="position_description" id = "position_description" cols="80" rows="3">'.$row['position_description'].'</textarea></td>';
+        echo '<td><textarea name="position_description" id = "position_description" cols="160" rows="8">'.$row['position_description'].'</textarea></td>';
         echo "</tr>"."\n";
 
         echo "<tr>";
-        echo '<td><label for="answered">Ответили</label></td>';
-        echo "<td>";
+        echo '<td><label for="answered">Ответили</label>';
         if ($row['answered'])
           {
-          echo '  <input type="checkbox" checked id="answered" name="answered" value="1" />';
+          echo '  <input type="checkbox" checked id="answered" name="answered" align = "middle" value="1" />';
           }
         else 
           {
           echo "<td>";
-          echo '  <input type="checkbox" id="answered" name="answered" value="0" />';
+          echo '  <input type="checkbox" id="answered" name="answered" align = "middle" value="0" />';
           }
         echo "</td>";
         echo "</tr>"."\n";
