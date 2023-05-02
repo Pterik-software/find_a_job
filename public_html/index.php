@@ -83,7 +83,7 @@ try
     $sql = "SELECT c.*, DATEDIFF(NOW(),created) when_created, DATEDIFF(NOW(),updated) when_updated,  ".
     " case when archived then 'Да' when not archived then 'Нет' else '' end archived_text, ".
     " case when answered then 'Да' when not answered then 'Нет' else '' end sanswered ".
-    " FROM contacts c ".$archived_value.$search_value;
+    " FROM contacts c ".$archived_value.$search_value. ' order by created desc';
     foreach ($db->query($sql) as $row) {
     echo '<td> <a href="update_contact.php/?id='.$row['id'].'">'.$row['id'].'</td>';
     echo "<td>".$row['company_name'] . "</td>";

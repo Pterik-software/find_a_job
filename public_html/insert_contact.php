@@ -43,12 +43,15 @@ from contacts
   </tr>
   <tr>
     <td><label for="position_source">Источник вакансии</label><br></td>
-    <td>	<input type="radio" name="position_source" id="position_source" value="linkedin">
-      <label>Linkedin</label>
+    <td>	
+      <input type="radio" name="position_source" id="position_source" value="linkedin">
+      <label>Linkedin</label><br>
       <input type="radio" name="position_source" id="position_source" value="indeed">
       <label>Indeed</label><br>
-      <input type="radio" name="position_source" id="position_source" value="indeed">
+      <input type="radio" name="position_source" id="position_source" value="glassdoor">
       <label>Glasdoor</label><br>
+      <input type="radio" name="position_source" id="position_source" value="dice.com">
+      <label>Dice</label><br>
       <input type="radio" name="position_source" id="position_source" value="other">
       <label>Другое</label><br>
     </td>
