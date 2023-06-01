@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Job search</title>
+    <title>Position search</title>
   </head>
   <body>    
 
@@ -33,7 +33,7 @@ echo('position_source='.$position_source .'<br>');
 //echo('position_name='.$position_name .'<br>'); 
 //echo('position_description='.$position_description .'<br>'); 
 
-$query = 'INSERT INTO contacts (comment, company_name, contact_person, email, phone, position_link, position_name, '.
+$query = 'INSERT INTO positions (comment, company_name, contact_person, email, phone, position_link, position_name, '.
 'position_description, position_source, answered, answer_text) '.
 'VALUES ( :comment, :company_name, :contact_person, :email, :phone, :position_link, :position_name, '.
 'REPLACE( :position_description, CONCAT(CHAR(13),char(10),CHAR(13),CHAR(10)), CONCAT(CHAR(13),char(10))), :position_source, false, "")';
@@ -53,7 +53,7 @@ try
         ':position_description' => $position_description,
         ':position_source' => $position_source
     ));
-    echo "Контакт успешно добавлен";
+    echo "Position успешно добавлен";
 }
 catch (PDOException $e)
 {

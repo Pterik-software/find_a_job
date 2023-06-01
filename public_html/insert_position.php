@@ -5,7 +5,7 @@
     <title>Job search</title>
   </head>
   <body>    
-<h2>Добавление нового лида (контакта)</h2>
+<h2>Добавление нового контакта (лида)</h2>
 
 <!--select 
 id 
@@ -17,9 +17,9 @@ phone,
 position_name,
 position_description,	
 position_source
-from contacts
+from positions
 -->
-<form action="do_insert.php" method="post">
+<form action="do_insert_position.php" method="post">
 <table>
   <tr>
     <td><label for="comment">Комментарий</label></td>

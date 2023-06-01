@@ -24,7 +24,7 @@
 <table>
   <tr>  
   <td>
-  <button><img src="images/insert.png" style="vertical-align: middle" > <a href="insert_contact.php">Добавить вакансию</a></button>
+  <button><img src="images/insert.png" style="vertical-align: middle" > <a href="insert_position.php">Добавить вакансию</a></button>
   </td>
   <form action="/index.php" method="get">
   <td><label for="search">Поиск</label></td>
@@ -38,10 +38,16 @@
   <a href="index.php?archived=0">архив +</a>  
   </td>
 </form>
+  <td>
+  <button><img src="images/kaska.png" style="vertical-align: middle" > <a href="job_sites.php">Сайты работы</a></button>
+  </td>
+  <td>
+  <button><a href="freelance_sites.php">Сайты фриланса</a><img src="images/freelancehunt.svg" style="vertical-align: middle"></button>
+  </td>
 </tr>
 <!--select 
 id 
-contact_name,
+comment,
 company_name,
 contact_person,
 email,
@@ -49,7 +55,7 @@ phone,
 position_name,
 position_description,	
 position_source
-from contacts
+from positions
 where archived is false
 -->
 <table rules="all">
@@ -57,6 +63,7 @@ where archived is false
     <tr>
       <th>Вакансия</th>
       <th>Компания</th>
+      <th>Rate</th>
       <th>Контакт</th>
       <th>Мой комментарий</th>
       <th>email</th>
@@ -86,24 +93,25 @@ try
       { $archived_value = " where archived = FALSE";}
     $search_value = '';
     if (isset($_GET['search']) and (trim($_GET['search'])!="") )
-      {$search_value = 'and (lower(concat(ifnull(company_name,""),ifnull(contact_name,""), ifnull(contact_person,""),ifnull(email,""),ifnull(phone,""),ifnull(position_link,""),ifnull(position_name,"") )) like lower("%'.htmlentities(trim(($_GET['search']))).'%"))';
+      {$search_value = 'and (lower(concat(ifnull(company_name,""),ifnull(comment,""), ifnull(contact_person,""),ifnull(email,""),ifnull(phone,""),ifnull(position_link,""),ifnull(position_name,"") )) like lower("%'.htmlentities(trim(($_GET['search']))).'%"))';
        //print_r("Строка поиска '".$_GET['search']."'");
       };
     //echo (" search case=".$search_value);
     $sql = "SELECT c.*, DATEDIFF(NOW(),created) when_created, DATEDIFF(NOW(),updated) when_updated,  ".
     " case when archived then 'Да' when not archived then 'Нет' else '' end archived_text, ".
     " case when answered then 'Да' when not answered then 'Нет' else '' end sanswered ".
-    " FROM contacts c ".$archived_value.$search_value. ' order by created desc';
+    " FROM positions c ".$archived_value.$search_value. ' order by created desc';
     foreach ($db->query($sql) as $row) {
     if (empty($row['position_link'])) {
-      echo '<td> <a href="update_contact.php/?id='.$row['id'].'">'.$row['position_name'];
+      echo '<td> <a href="update_position.php/?id='.$row['id'].'">'.$row['position_name'];
       echo '</td>';
     }
     else {
-      echo '<td> <a href="update_contact.php/?id='.$row['id'].'">'.$row['position_name'];
+      echo '<td> <a href="update_position.php/?id='.$row['id'].'">'.$row['position_name'];
       echo '<a href="'.$row['position_link'].'" rel="external"> <img src="images/new_window.png"></a>'.'</td>';
     };
     echo "<td>".$row['company_name'] . "</td>";
+    echo "<td>".$row['rate'] . "</td>";
     echo "<td>".$row['contact_person'] . "</td>";
     echo "<td>".$row['comment'] . "</td>";
     echo "<td>".substr($row['email'],0,20)."<br>".substr($row['email'],20,40)."</td>";

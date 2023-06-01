@@ -8,9 +8,9 @@
   <h2>Исправление лида - сохранение</h2>
  <?php
 include_once 'connection.php';
-print("<p>");
-print_r($_POST);
-print("<p>");
+#print("<p>");
+#print_r($_POST);
+#print("<p>");
 $id  = strip_tags(htmlentities($_POST['id'])); 
 $comment  = strip_tags(htmlentities($_POST['comment'])); 
 $phone = strip_tags(htmlentities($_POST['phone'])); 
@@ -29,7 +29,7 @@ if (trim($answered) == '') $answered=0;
 $answer_text = strip_tags(htmlentities($_POST['answer_text']));
 if (strpos($answer_text, "\r\n\r\n")>0)
   {$answer_text= str_replace("\r\n\r\n","\r\n",$answer_text);};
-$query = "update contacts set ".
+$query = "update positions set ".
          "comment = :comment, company_name = :company_name, ".
          "contact_person = :contact_person, email = :email, phone = :phone, ".
          "position_link = :position_link, position_name = :position_name, ".
@@ -57,7 +57,7 @@ try
         ':answered' => $answered,
         ':answer_text' => $answer_text
     ));
-    echo "Контакт успешно обновлён";
+    echo "Position успешно обновлён";
 }
 catch (PDOException $e)
 {

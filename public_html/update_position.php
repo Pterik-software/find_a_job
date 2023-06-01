@@ -5,8 +5,8 @@
     <title>Job search</title>
   </head>
   <body>    
-<h2>Исправление лида (контакта)</h2>
-<form action="/do_update.php" method="post">
+<h2>Редактирование контакта</h2>
+<form action="/do_update_position.php" method="post">
 <table>
 <?php
 //print_r($_GET);
@@ -16,7 +16,7 @@ try
 {
     $database = new Connection();
     $db = $database->openConnection();
-    $query = "SELECT c.*, DATEDIFF(NOW(),created) when_created, DATEDIFF(NOW(),updated) when_updated FROM contacts c where id = ".$id;
+    $query = "SELECT c.*, DATEDIFF(NOW(),created) when_created, DATEDIFF(NOW(),updated) when_updated FROM positions c where id = ".$id;
     //отрисовать все элементы формы через echo  и добавить внутри value значения переменных
     foreach ($db->query($query) as $row) {
         echo "<tr>";
@@ -132,7 +132,7 @@ $database->closeConnection();
 ?>
   <tr>
     <td align="left"><input type="button" onclick="window.location.href = '/index.php';" value="Назад"></td>
-    <td align="left"><input type="button" onclick="window.location.href = '/do_delete.php/?id=<?php echo ($id) ?>';" value="Удалить"></td>
+    <td align="left"><input type="button" onclick="window.location.href = '/do_delete_position.php/?id=<?php echo ($id) ?>';" value="Удалить"></td>
     <td align="right"><input type="submit" value="Сохранить"></td>
   </tr>
 </table>
