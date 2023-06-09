@@ -17,7 +17,7 @@
    window.onload = externalLinks;
   /* ]]> */ 
  </script>  <body>    
-<h1>Список лидов</h1>
+<h1>Список вакансий</h1>
 <?php 
 //print_r($_GET);
 ?>
@@ -63,12 +63,15 @@ where archived is false
     <tr>
       <th>Вакансия</th>
       <th>Компания</th>
-      <th>Rate</th>
+      <th>Ручная<br>оценка</th>
+      <th>Расчётная<br>оценка </th>
+      <th>Оплата<br>ставка</th>
       <th>Контакт</th>
       <th>Мой комментарий</th>
       <th>email</th>
       <th>phone</th>
-      <th>Источник</th>
+      <th>Город</th>
+      <th>Источник<br>вакансии</th>
       <th>Ответили</th>
       <th>Текст ответа</th>
       <th>Создано</th>
@@ -111,6 +114,8 @@ try
       echo '<a href="'.$row['position_link'].'" rel="external"> <img src="images/new_window.png"></a>'.'</td>';
     };
     echo "<td>".$row['company_name'] . "</td>";
+    echo "<td>".$row['manual_rank'] . "</td>";
+    echo "<td>".$row['automatic_rank'] . "</td>";
     echo "<td>".$row['rate'] . "</td>";
     echo "<td>".$row['contact_person'] . "</td>";
     echo "<td>".$row['comment'] . "</td>";
@@ -124,6 +129,7 @@ try
     else {
       echo "<td><a href=".$row['phone'].' target="_blank" rel="external">'.substr($row['phone'],0,16).' </a>'.'</td>';
     };  
+    echo "<td>".$row['company_city'] . "</td>";
     echo "<td>".$row['position_source'] . "</td>";
     echo "<td>".$row['sanswered'] . "</td>"."\n";
     if (empty($row['answer_text'])) 
