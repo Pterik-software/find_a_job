@@ -58,7 +58,7 @@ catch (PDOException $e)
     echo "There is some problem in connection: " . $e->getMessage();
 }
 ?>
-<form action="index.php" method="post">
+<form action="jobsearch/index.php" method="post">
 <tr>    
 <td align="left"><input type="submit" value="На главную"></td>
 </tr>

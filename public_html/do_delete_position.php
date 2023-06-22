@@ -26,7 +26,7 @@ catch (PDOException $e)
 }
 ?>
 
-<form action="/index.php" method="post">
+<form action="/jobsearch/index.php" method="post">
 <tr>    
 <td align="left"><input type="submit" value="Home"></td>
 </tr>

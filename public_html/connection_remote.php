@@ -1,8 +1,8 @@
 <?php
 Class Connection {
-private  $server = "mysql:host=local;dbname=jobsearch";
-private  $user = "jobsearch";
-private  $pass = "jobsearch";
+private  $server = "mysql:host=ka455770.mysql.tools;dbname=ka455770_jobsearch";
+private  $user = "ka455770_jobsearch";
+private  $pass = "s8Yf%#7F5f";
 private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
 protected $con;
           	public function openConnection()
