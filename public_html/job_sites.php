@@ -63,7 +63,7 @@ try
     echo "</tr>";
 }
 echo '</table>';
-echo '<form action="/index.php" method="post">';
+echo '<form action="/select.php" method="post">';
 echo '<table>';
 echo '  <tr>';
 echo '  <td align="right"><input type="submit" value="На главную"></td>';

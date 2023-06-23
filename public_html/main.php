@@ -26,16 +26,16 @@
   <td>
   <button><img src="images/insert.png" style="vertical-align: middle" > <a href="insert_position.php">Добавить вакансию</a></button>
   </td>
-  <form action="/index.php" method="get">
+  <form action="/select.php" method="get">
   <td><label for="search">Поиск</label></td>
   <?php
   echo '<td><input type="text" id = "search" name="search" value="'.$_GET['search'].'"></td>';
   ?>
   <td align="right"><input type="submit" value="Искать"></td>
   <td>
-  <a href="index.php?archived=-1">все</a><p>
-  <a href="index.php?archived=1">архив - </a><p>
-  <a href="index.php?archived=0">архив +</a>  
+  <a href="select.php?archived=-1">все</a><p>
+  <a href="select.php?archived=1">архив - </a><p>
+  <a href="select.php?archived=0">архив +</a>  
   </td>
 </form>
   <td>

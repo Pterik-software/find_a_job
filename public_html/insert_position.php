@@ -98,7 +98,7 @@ from positions
     </td>  
   </tr>
   <tr>
-    <td align="left"><input type="button" onclick="return location.href = '/index.php'" value="На главную"></td>
+    <td align="left"><input type="button" onclick="return location.href = '/select.php'" value="На главную"></td>
     <td align="center"><input type="reset" value="Очистить"></td>
     <td align="right"><input type="submit" value="Отправить"></td>
     

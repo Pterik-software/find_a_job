@@ -89,7 +89,7 @@ catch (PDOException $e)
 }
 ?>
 
-<form action="/index.php" method="post">
+<form action="/select.php" method="post">
 <tr>    
 <td align="left"><input type="submit" value="На главную"></td>
 </tr>

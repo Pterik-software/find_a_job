@@ -50,6 +50,9 @@
   <td>
   <button><a href="/freelance_sites.php">Сайты фриланса</a><img src="images/freelancehunt.svg" style="vertical-align: middle"></button>
   </td>
+  <td>
+  <button><a href="/stats.php">Статистика</a><img src="images/stats.png" style="vertical-align: middle" width="40" height="40" ></button>
+  </td>
 </tr>
 <!--select 
 id 
