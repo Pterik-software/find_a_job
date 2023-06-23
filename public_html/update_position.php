@@ -6,10 +6,10 @@
   </head>
   <body>    
 <h2>Редактирование контакта</h2>
-<form action="do_update_position.php" method="post">
+<form action="/do_update_position.php" method="post">
 <table>
 <?php
-//print_r($_GET);
+print_r($_GET);
 include_once 'connection.php';
 $id  = strip_tags(htmlentities($_GET['id'])); 
 try
@@ -152,8 +152,8 @@ catch (PDOException $e)
 $database->closeConnection();
 ?>
   <tr>
-    <td align="left"><input type="button" onclick="window.location.href = 'index.php';" value="Назад"></td>
-    <td align="left"><input type="button" onclick="window.location.href = 'do_delete_position.php/?id=<?php echo ($id) ?>';" value="Удалить"></td>
+    <td align="left"><input type="button" onclick="window.location.href = '/index.php';" value="Назад"></td>
+    <td align="left"><input type="button" onclick="window.location.href = '/do_delete_position.php/?id=<?php echo ($id) ?>';" value="Удалить"></td>
     <td align="right"><input type="submit" value="Сохранить"></td>
   </tr>
 </table>

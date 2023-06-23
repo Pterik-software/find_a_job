@@ -5,12 +5,12 @@
     <title>Job search</title>
   </head>
   <body>    
-  <h2>Исправление вакансии - сохранение</h2>
+  <h2>Редактирование контакта - сохранение</h2>
  <?php
 include_once 'connection.php';
-#print("<p>");
-#print_r($_POST);
-#print("<p>");
+//print("<p>");
+//print_r($_POST);
+//print("<p>");
 $id  = strip_tags(htmlentities($_POST['id'])); 
 $comment  = strip_tags(htmlentities($_POST['comment'])); 
 $phone = strip_tags(htmlentities($_POST['phone'])); 
@@ -89,7 +89,7 @@ catch (PDOException $e)
 }
 ?>
 
-<form action="index.php" method="post">
+<form action="/index.php" method="post">
 <tr>    
 <td align="left"><input type="submit" value="На главную"></td>
 </tr>

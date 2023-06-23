@@ -29,7 +29,13 @@
   <form action="/index.php" method="get">
   <td><label for="search">Поиск</label></td>
   <?php
-  echo '<td><input type="text" id = "search" name="search" value="'.$_GET['search'].'"></td>';
+  if (!isset($_GET['search'])) {
+      echo '<td><input type="text" id = "search" name="search" value=""></td>';
+    }
+  else {
+      echo '<td><input type="text" id = "search" name="search" value="'.$_GET['search'].'"></td>';
+  }
+  
   ?>
   <td align="right"><input type="submit" value="Искать"></td>
   <td>
@@ -39,7 +45,7 @@
   </td>
 </form>
   <td>
-  <button><img src="images/kaska.png" style="vertical-align: middle" > <a href="job_sites.php">Сайты работы</a></button>
+  <button><a href="job_sites.php">Резюме на <br>сайты работы</a><img src="images/kaska.png" style="vertical-align: middle" ></button>
   </td>
   <td>
   <button><a href="freelance_sites.php">Сайты фриланса</a><img src="images/freelancehunt.svg" style="vertical-align: middle"></button>
@@ -104,15 +110,16 @@ try
     " case when archived then 'Да' when not archived then 'Нет' else '' end archived_text, ".
     " case when answered then 'Да' when not answered then 'Нет' else '' end sanswered ".
     " FROM positions c ".$archived_value.$search_value. ' order by created desc';
-    foreach ($db->query($sql) as $row) {
-    if (empty($row['position_link'])) {
+    $query = $db->query($sql);
+    //if ($result != null) {
+    while ($row = $query->fetch()) {
       echo '<td> <a href="update_position.php/?id='.$row['id'].'">'.$row['position_name'];
-      echo '</td>';
-    }
-    else {
-      echo '<td> <a href="update_position.php/?id='.$row['id'].'">'.$row['position_name'];
+      if (!empty($row['position_link'])) {
       echo '<a href="'.$row['position_link'].'" rel="external"> <img src="images/new_window.png"></a>'.'</td>';
-    };
+      };
+    //}
+      echo '</td>';
+    
     echo "<td>".$row['company_name'] . "</td>";
     echo "<td>".$row['manual_rank'] . "</td>";
     echo "<td>".$row['automatic_rank'] . "</td>";
