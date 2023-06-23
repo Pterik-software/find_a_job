@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <title>Удаление предложения работы</title>
@@ -26,7 +26,7 @@ catch (PDOException $e)
 }
 ?>
 
-<form action="/index.php" method="post">
+<form action="/select.php" method="post">
 <tr>    
 <td align="left"><input type="submit" value="Home"></td>
 </tr>

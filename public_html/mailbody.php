@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <title>Почтовое сообщение</title>

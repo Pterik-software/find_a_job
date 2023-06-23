@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <title>Job search</title>
@@ -26,7 +26,7 @@
   <td>
   <button><img src="images/insert.png" style="vertical-align: middle" > <a href="insert_position.php">Добавить вакансию</a></button>
   </td>
-  <form action="/index.php" method="get">
+  <form action="/select.php" method="get">
   <td><label for="search">Поиск</label></td>
   <?php
   if (!isset($_GET['search'])) {
@@ -39,16 +39,16 @@
   ?>
   <td align="right"><input type="submit" value="Искать"></td>
   <td>
-  <a href="index.php?archived=-1">все</a><p>
-  <a href="index.php?archived=1">архив - </a><p>
-  <a href="index.php?archived=0">архив +</a>  
+  <a href="/select.php?archived=-1">все</a><p>
+  <a href="/selct.php?archived=1">архив - </a><p>
+  <a href="/select.php?archived=0">архив +</a>  
   </td>
 </form>
   <td>
-  <button><a href="job_sites.php">Резюме на <br>сайты работы</a><img src="images/kaska.png" style="vertical-align: middle" ></button>
+  <button><a href="/job_sites.php">Резюме на <br>сайты работы</a><img src="images/kaska.png" style="vertical-align: middle" ></button>
   </td>
   <td>
-  <button><a href="freelance_sites.php">Сайты фриланса</a><img src="images/freelancehunt.svg" style="vertical-align: middle"></button>
+  <button><a href="/freelance_sites.php">Сайты фриланса</a><img src="images/freelancehunt.svg" style="vertical-align: middle"></button>
   </td>
 </tr>
 <!--select 

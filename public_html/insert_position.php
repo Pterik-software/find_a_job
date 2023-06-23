@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <title>Job search</title>
@@ -18,7 +18,7 @@
   </script>
   </head>
   <body>    
-<h2>Добавление нового контакта (лида)</h2>
+<h2>Добавление нового контакта</h2>
 
 <!--select 
 id 
