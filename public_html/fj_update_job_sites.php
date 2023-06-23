@@ -6,11 +6,11 @@
   </head>
   <body>    
 <h2>Редактирование сайта</h2>
-<form action="/do_update_job_sites.php" method="post">
+<form action="/fj_do_update_job_sites.php" method="post">
 <table>
 <?php
 //print_r($_GET);
-include_once 'connection.php';
+include_once 'fj_connection.php';
 $id  = strip_tags(htmlentities($_GET['id'])); 
 try
 {
@@ -67,8 +67,8 @@ catch (PDOException $e)
 $database->closeConnection();
 ?>
   <tr>
-    <td align="left"><input type="button" onclick="window.location.href = '/job_sites.php';" value="Назад"></td>
-    <td align="left"><input type="submit" onclick="window.location.href = '/do_update_job_sites.php/?id=<?php echo ($id) ?>';" value="Обновить"></td>
+    <td align="left"><input type="button" onclick="window.location.href = '/fj_job_sites.php';" value="Назад"></td>
+    <td align="left"><input type="submit" onclick="window.location.href = '/fj_do_update_job_sites.php/?id=<?php echo ($id) ?>';" value="Обновить"></td>
   </tr>
 </table>
 </form>

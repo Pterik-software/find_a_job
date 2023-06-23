@@ -17,7 +17,7 @@
   </thead>  
   <tr>
   <?php
-include_once 'connection.php';
+include_once 'fj_connection.php';
 try
 {
     $database = new Connection();
@@ -40,12 +40,12 @@ try
     "     FROM job_sites s order by created desc";
     foreach ($db->query($sql) as $row) {
       if (empty($row['site_link'])) {
-        echo '<td> <a href="update_job_sites.php/?id='.$row['id'].'">'.$row['site_name'];
+        echo '<td> <a href="fj_update_job_sites.php/?id='.$row['id'].'">'.$row['site_name'];
         echo '</td>';
       }
       else {
-        echo '<td> <a href="update_job_sites.php/?id='.$row['id'].'">'.$row['site_name'];
-        echo '<a href="'.$row['site_link'].'" rel="external"> <img src="images/new_window.png"></a>'.'</td>';
+        echo '<td> <a href="fj_update_job_sites.php/?id='.$row['id'].'">'.$row['site_name'];
+        echo '<a href="'.$row['site_link'].'" rel="external"> <img src="fj_images/new_window.png"></a>'.'</td>';
       };
     if ($row['when_updated']==0) {
         echo '<td>Сегодня</td>'."\n";
@@ -63,7 +63,7 @@ try
     echo "</tr>";
 }
 echo '</table>';
-echo '<form action="/select.php" method="post">';
+echo '<form action="/fj_select.php" method="post">';
 echo '<table>';
 echo '  <tr>';
 echo '  <td align="right"><input type="submit" value="На главную"></td>';

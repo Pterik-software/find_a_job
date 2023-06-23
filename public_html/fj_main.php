@@ -24,25 +24,25 @@
 <table>
   <tr>  
   <td>
-  <button><img src="images/insert.png" style="vertical-align: middle" > <a href="insert_position.php">Добавить вакансию</a></button>
+  <button><img src="fj_images/insert.png" style="vertical-align: middle" > <a href="fj_insert_position.php">Добавить вакансию</a></button>
   </td>
-  <form action="/select.php" method="get">
+  <form action="/fj_select.php" method="get">
   <td><label for="search">Поиск</label></td>
   <?php
   echo '<td><input type="text" id = "search" name="search" value="'.$_GET['search'].'"></td>';
   ?>
   <td align="right"><input type="submit" value="Искать"></td>
   <td>
-  <a href="select.php?archived=-1">все</a><p>
-  <a href="select.php?archived=1">архив - </a><p>
-  <a href="select.php?archived=0">архив +</a>  
+  <a href="fj_select.php?archived=-1">все</a><p>
+  <a href="fj_select.php?archived=1">архив - </a><p>
+  <a href="fj_select.php?archived=0">архив +</a>  
   </td>
 </form>
   <td>
-  <button><img src="images/kaska.png" style="vertical-align: middle" > <a href="job_sites.php">Сайты работы</a></button>
+  <button><img src="fg_images/kaska.png" style="vertical-align: middle" > <a href="fj_job_sites.php">Сайты работы</a></button>
   </td>
   <td>
-  <button><a href="freelance_sites.php">Сайты фриланса</a><img src="images/freelancehunt.svg" style="vertical-align: middle"></button>
+  <button><a href="fj_freelance_sites.php">Сайты фриланса</a><img src="fj_images/freelancehunt.svg" style="vertical-align: middle"></button>
   </td>
 </tr>
 <!--select 
@@ -83,7 +83,7 @@ where archived is false
   <tr>
 
 <?php
-include_once 'connection.php';
+include_once 'fj_connection.php';
 try
 {
     $database = new Connection();
@@ -106,12 +106,12 @@ try
     " FROM positions c ".$archived_value.$search_value. ' order by created desc';
     foreach ($db->query($sql) as $row) {
     if (empty($row['position_link'])) {
-      echo '<td> <a href="update_position.php/?id='.$row['id'].'">'.$row['position_name'];
+      echo '<td> <a href="fj_update_position.php/?id='.$row['id'].'">'.$row['position_name'];
       echo '</td>';
     }
     else {
-      echo '<td> <a href="update_position.php/?id='.$row['id'].'">'.$row['position_name'];
-      echo '<a href="'.$row['position_link'].'" rel="external"> <img src="images/new_window.png"></a>'.'</td>';
+      echo '<td> <a href="fj_update_position.php/?id='.$row['id'].'">'.$row['position_name'];
+      echo '<a href="'.$row['position_link'].'" rel="external"> <img src="fj_images/new_window.png"></a>'.'</td>';
     };
     echo "<td>".$row['company_name'] . "</td>";
     echo "<td>".$row['manual_rank'] . "</td>";

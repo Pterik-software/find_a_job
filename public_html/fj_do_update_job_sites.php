@@ -7,7 +7,7 @@
   <body>    
   <h2>Обновление сайта</h2>
  <?php
-include_once 'connection.php';
+include_once 'fj_connection.php';
 #print("<p>");
 #print_r($_POST);
 #print("<p>");
@@ -37,7 +37,7 @@ catch (PDOException $e)
 }
 ?>
 
-<form action="job_sites.php" method="post">
+<form action="fj_job_sites.php" method="post">
 <tr>    
 <td align="left"><input type="submit" value="На главную"></td>
 </tr>

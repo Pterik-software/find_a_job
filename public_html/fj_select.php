@@ -24,9 +24,9 @@
 <table>
   <tr>  
   <td>
-  <button><img src="images/insert.png" style="vertical-align: middle" > <a href="insert_position.php">Добавить вакансию</a></button>
+  <button><img src="fj_images/insert.png" style="vertical-align: middle" > <a href="fj_insert_position.php">Добавить вакансию</a></button>
   </td>
-  <form action="/select.php" method="get">
+  <form action="/fj_select.php" method="get">
   <td><label for="search">Поиск</label></td>
   <?php
   if (!isset($_GET['search'])) {
@@ -39,19 +39,19 @@
   ?>
   <td align="right"><input type="submit" value="Искать"></td>
   <td>
-  <a href="/select.php?archived=-1">все</a><p>
-  <a href="/selct.php?archived=1">архив - </a><p>
-  <a href="/select.php?archived=0">архив +</a>  
+  <a href="/fj_select.php?archived=-1">все</a><p>
+  <a href="/fj_select.php?archived=1">архив - </a><p>
+  <a href="/fj_select.php?archived=0">архив +</a>  
   </td>
 </form>
   <td>
-  <button><a href="/job_sites.php">Резюме на <br>сайты работы</a><img src="images/kaska.png" style="vertical-align: middle" ></button>
+  <button><a href="/fj_job_sites.php">Резюме на <br>сайты работы</a><img src="fj_images/kaska.png" style="vertical-align: middle" ></button>
   </td>
   <td>
-  <button><a href="/freelance_sites.php">Сайты фриланса</a><img src="images/freelancehunt.svg" style="vertical-align: middle"></button>
+  <button><a href="/fj_freelance_sites.php">Сайты фриланса</a><img src="fj_images/freelancehunt.svg" style="vertical-align: middle"></button>
   </td>
   <td>
-  <button><a href="/stats.php">Статистика</a><img src="images/stats.png" style="vertical-align: middle" width="40" height="40" ></button>
+  <button><a href="/fj_stats.php">Статистика</a><img src="fj_images/stats.png" style="vertical-align: middle" width="40" height="40" ></button>
   </td>
 </tr>
 <!--select 
@@ -92,7 +92,7 @@ where archived is false
   <tr>
 
 <?php
-include_once 'connection.php';
+include_once 'fj_connection.php';
 try
 {
     $database = new Connection();
@@ -103,6 +103,7 @@ try
       { $archived_value = " where archived = TRUE";}
     elseif ($_GET['archived'] == '0')  
       { $archived_value = " where archived = FALSE";}
+    else {$archived_value = "";}  
     $search_value = '';
     if (isset($_GET['search']) and (trim($_GET['search'])!="") )
       {$search_value = 'and (lower(concat(ifnull(company_name,""),ifnull(comment,""), ifnull(contact_person,""),ifnull(email,""),ifnull(phone,""),ifnull(position_link,""),ifnull(position_name,"") )) like lower("%'.htmlentities(trim(($_GET['search']))).'%"))';
@@ -116,9 +117,9 @@ try
     $query = $db->query($sql);
     //if ($result != null) {
     while ($row = $query->fetch()) {
-      echo '<td> <a href="update_position.php/?id='.$row['id'].'">'.$row['position_name'];
+      echo '<td> <a href="fj_update_position.php/?id='.$row['id'].'">'.$row['position_name'];
       if (!empty($row['position_link'])) {
-      echo '<a href="'.$row['position_link'].'" rel="external"> <img src="images/new_window.png"></a>'.'</td>';
+      echo '<a href="'.$row['position_link'].'" rel="external"> <img src="fj_images/new_window.png"></a>'.'</td>';
       };
     //}
       echo '</td>';

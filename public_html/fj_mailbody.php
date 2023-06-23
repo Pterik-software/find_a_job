@@ -40,9 +40,9 @@ $details = array(
  echo "<li><strong>From:</strong>" . $details["fromName"];
  echo " " . $details["fromAddr"] . "</li>";
  echo "<li><strong>Subject:</strong> " . $details["subject"] . "</li>";
- echo '<li><a href="mailbody.php?folder=' . $folder . '&uid=' . $uid . '&func=read">Read</a>';
+ echo '<li><a href="fj_mailbody.php?folder=' . $folder . '&uid=' . $uid . '&func=read">Read</a>';
  echo " | ";
- echo '<a href="mailbody.php?folder=' . $folder . '&uid=' . $uid . '&func=delete">Delete</a></li>';
+ echo '<a href="fj_mailbody.php?folder=' . $folder . '&uid=' . $uid . '&func=delete">Delete</a></li>';
  echo "</ul>";
 
 ?>

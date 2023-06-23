@@ -32,7 +32,7 @@ position_description,
 position_source
 from positions
 -->
-<form action="/do_insert_position.php" method="post">
+<form action="/fj_do_insert_position.php" method="post">
 <table>
   <tr>
     <td><label for="position_name">Вакансия кратко</label></td>
@@ -98,7 +98,7 @@ from positions
     </td>  
   </tr>
   <tr>
-    <td align="left"><input type="button" onclick="return location.href = '/select.php'" value="На главную"></td>
+    <td align="left"><input type="button" onclick="return location.href = '/fj_select.php'" value="На главную"></td>
     <td align="center"><input type="reset" value="Очистить"></td>
     <td align="right"><input type="submit" value="Отправить"></td>
     

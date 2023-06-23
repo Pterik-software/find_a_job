@@ -45,7 +45,7 @@ $folders = imap_list($imap, "{mail.adm.tools:993/imap/ssl}", "*");
 echo "<ul>";
 foreach ($folders as $folder) {
     $folder = str_replace("{mail.adm.tools:993/imap/ssl}", "", imap_utf7_decode($folder));
-    echo '<li><a href="mailbody.php?folder=' . $folder . '&func=view">' . $folder . '</a></li>';
+    echo '<li><a href="fj_mailbody.php?folder=' . $folder . '&func=view">' . $folder . '</a></li>';
 }
 echo "</ul>";
 
@@ -77,9 +77,9 @@ for ($i = $numMessages; ($i > ($numMessages - 20)) && ($i>0) ; $i--) {
     echo "<li><strong>From:</strong>" . $details["fromName"];
     echo " " . $details["fromAddr"] . "</li>";
     echo "<li><strong>Subject:</strong> " . $details["subject"] . "</li>";
-    echo '<li><a href="mailbody.php?folder=' . $folder . '&uid=' . $uid . '&func=read">Read</a>';
+    echo '<li><a href="fj_mailbody.php?folder=' . $folder . '&uid=' . $uid . '&func=read">Read</a>';
     echo " | ";
-    echo '<a href="mailbody.php?folder=' . $folder . '&uid=' . $uid . '&func=delete">Delete</a></li>';
+    echo '<a href="fj_mailbody.php?folder=' . $folder . '&uid=' . $uid . '&func=delete">Delete</a></li>';
     echo "</ul>";
   }
 #$emailData = imap_search($inbox, '');

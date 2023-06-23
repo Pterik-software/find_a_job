@@ -7,7 +7,7 @@
   <body>    
 
  <?php
-include_once 'connection.php';
+include_once 'fj_connection.php';
 $comment  = strip_tags(htmlentities($_POST['comment'])); 
 $phone = strip_tags(htmlentities($_POST['phone'])); 
 $company_name = strip_tags(htmlentities($_POST['company_name']));
@@ -58,7 +58,7 @@ catch (PDOException $e)
     echo "There is some problem in connection: " . $e->getMessage();
 }
 ?>
-<form action="/select.php" method="post">
+<form action="/fj_select.php" method="post">
 <tr>    
 <td align="left"><input type="submit" value="На главную"></td>
 </tr>

@@ -31,7 +31,7 @@ where archived is false
   </thead>  
 
 <?php
-include_once 'connection.php';
+include_once 'fj_connection.php';
 try
 {
     $database = new Connection();
@@ -47,7 +47,7 @@ try
         echo "</tr>";
     }
 echo "</table>";
-echo '<form action="/select.php" method="post">';
+echo '<form action="/fj_select.php" method="post">';
 echo '  <input type="submit" value="На главную">';
 echo '</form>';
 $database->closeConnection();

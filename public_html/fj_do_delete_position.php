@@ -7,7 +7,7 @@
   <body>    
   <h2>Удаление предложения работы</h2>
  <?php
-include_once 'connection.php';
+include_once 'fj_connection.php';
 $id  = strip_tags(htmlentities($_GET['id'])); 
 $query = "delete from positions where id = :id";
 try
@@ -26,7 +26,7 @@ catch (PDOException $e)
 }
 ?>
 
-<form action="/select.php" method="post">
+<form action="/fj_select.php" method="post">
 <tr>    
 <td align="left"><input type="submit" value="Home"></td>
 </tr>
