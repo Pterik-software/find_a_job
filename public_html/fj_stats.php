@@ -22,7 +22,7 @@ position_source
 from positions
 where archived is false
 -->
-<table stats="all">
+<table cellspacing="2" border="1" cellpadding="5" width="300" stats="all">
   <thead>
     <tr>
       <th>Дата</th>
@@ -42,7 +42,7 @@ try
     //if ($result != null) {
     while ($row = $query->fetch()) {
         echo "<tr>";
-        echo "<td>".$row['trunc_updated'] . "</td>";
+        echo "<td align = 'right'>".$row['trunc_updated'] . "</td>";
         echo "<td align = 'right'>".$row['cntr'] . "</td>";
         echo "</tr>";
     }
